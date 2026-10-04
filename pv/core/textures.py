@@ -55,12 +55,15 @@ def paper_fibers(seed=3):
     return tex.astype(np.float32)
 
 
-@cached
+_LS = 4  # the lamp falloff is smooth: compute it at 1/4 resolution and upsample
+
+
 def lamp_map(cx=0.5, cy=0.45, radius=0.75, power=1.6, edge=0.18, warm=1.0):
-    """Backlight falloff of an oil lamp behind the shadow screen.  float32 HxWx3."""
-    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
-    dx = (xx / W - cx) * (W / H)
-    dy = (yy / H - cy)
+    """Backlight falloff of an oil lamp behind the shadow screen.  float32 HxWx3 (not cached)."""
+    h, w = H // _LS, W // _LS
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    dx = ((xx + 0.5) / w - cx) * (W / H)
+    dy = ((yy + 0.5) / h - cy)
     d = np.sqrt(dx * dx + dy * dy) / radius
     f = np.clip(1 - d, 0, 1) ** power
     f = edge + (1 - edge) * f
@@ -68,21 +71,36 @@ def lamp_map(cx=0.5, cy=0.45, radius=0.75, power=1.6, edge=0.18, warm=1.0):
     r = f
     g = f ** (1.0 + 0.25 * warm)
     b = f ** (1.0 + 0.75 * warm)
-    return np.stack([r, g, b], axis=-1).astype(np.float32)
+    small = np.stack([r, g, b], axis=-1).astype(np.float32)
+    return cv2.resize(small, (W, H), interpolation=cv2.INTER_LINEAR)
 
 
 PAPER_RGB = np.array([248, 236, 212], np.float32) / 255.0
 
 
-@cached
+from collections import OrderedDict
+
+_LIGHT_LRU = OrderedDict()
+_LIGHT_MAX = 6   # light maps are 8 MB each; animated lights create a new one every frame
+
+
 def screen_light(cx=0.5, cy=0.45, radius=0.75, power=1.6, edge=0.18, warm=1.0, paper=PAPER_RGB.tobytes()):
-    """uint8 HxWx4 lit paper (lamp falloff x fibres x paper colour), alpha=255."""
+    """uint8 HxWx4 lit paper (lamp falloff x fibres x paper colour), alpha=255.  Small LRU cache."""
+    key = (cx, cy, radius, power, edge, warm, paper)
+    hit = _LIGHT_LRU.get(key)
+    if hit is not None:
+        _LIGHT_LRU.move_to_end(key)
+        return hit
     pc = np.frombuffer(paper, np.float32)
     lm = lamp_map(cx, cy, radius, power, edge, warm)
-    tex = paper_fibers()
-    img = lm * tex[..., None] * pc[None, None, :]
-    rgb = np.clip(img * 255, 0, 255).astype(np.uint8)
-    return np.ascontiguousarray(np.dstack([rgb, np.full((H, W), 255, np.uint8)]))
+    lm *= paper_fibers()[..., None]
+    lm *= pc[None, None, :] * 255.0
+    rgb = np.clip(lm, 0, 255).astype(np.uint8)
+    img = np.ascontiguousarray(np.dstack([rgb, np.full((H, W), 255, np.uint8)]))
+    _LIGHT_LRU[key] = img
+    while len(_LIGHT_LRU) > _LIGHT_MAX:
+        _LIGHT_LRU.popitem(last=False)
+    return img
 
 
 @cached

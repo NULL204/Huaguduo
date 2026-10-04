@@ -13,3 +13,7 @@ out/
 !docs/*.png
 __pycache__/
 *.pyc
+
+# rendered videos that are kept in the repo
+!videos/
+!videos/*.mp4
