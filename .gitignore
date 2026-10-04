@@ -1,0 +1,15 @@
+# User-supplied media: the song and its lyrics are NOT redistributed in this repo.
+assets/song.mp3
+assets/lyrics.lrc
+assets/*.mp3
+assets/*.lrc
+# Fonts are downloaded by tools/fetch_fonts.sh (SIL OFL, fetched from Google Fonts)
+assets/fonts/
+# Render outputs
+out/
+*.mp4
+*.mov
+*.png
+!docs/*.png
+__pycache__/
+*.pyc

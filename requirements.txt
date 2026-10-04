@@ -1,0 +1,6 @@
+numpy
+skia-python
+opencv-python-headless
+scipy
+pillow
+librosa        # only needed for tools/analyze_audio.py
