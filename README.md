@@ -1,5 +1,7 @@
 # 花骨朵 · 胭脂影戏 — a fan-made animated PV
 
+![cover](docs/cover.jpg)
+
 A non-official, fan-made animated music video for the song **《花骨朵》**, rendered entirely in code:
 every frame is drawn procedurally (vector shadow-puppets, ink-wash brushwork, particles and
 post-processing) and timed to the song's beat grid and to each sung syllable.
@@ -76,6 +78,12 @@ cp /path/to/your/song.mp3   assets/song.mp3
 cp /path/to/your/lyrics.lrc assets/lyrics.lrc
 python tools/analyze_audio.py             # optional: regenerate data/*.json (beats, syllable times)
 python render.py                          # -> out/huaguduo_pv.mp4  (≈20 min on 4 cores)
+```
+
+The cover image (`docs/cover.png`, 16:9) is drawn with the same engine:
+
+```bash
+python tools/make_cover.py                # -> out/cover.png / out/cover.jpg
 ```
 
 Previewing while working:
