@@ -257,5 +257,54 @@
   "src": "NotoSerifSC[wght].ttf",
   "file": "NotoSerifSC_wght_.ttf",
   "size": 25125512
+ },
+ {
+  "family": "Ma Shan Zheng",
+  "dir": "mashanzheng",
+  "src": "MaShanZheng-Regular.ttf",
+  "file": "MaShanZheng-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "ZCOOL XiaoWei",
+  "dir": "zcoolxiaowei",
+  "src": "ZCOOLXiaoWei-Regular.ttf",
+  "file": "ZCOOLXiaoWei-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "ZCOOL QingKe HuangYou",
+  "dir": "zcoolqingkehuangyou",
+  "src": "ZCOOLQingKeHuangYou-Regular.ttf",
+  "file": "ZCOOLQingKeHuangYou-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "ZCOOL KuaiLe",
+  "dir": "zcoolkuaile",
+  "src": "ZCOOLKuaiLe-Regular.ttf",
+  "file": "ZCOOLKuaiLe-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "Zhi Mang Xing",
+  "dir": "zhimangxing",
+  "src": "ZhiMangXing-Regular.ttf",
+  "file": "ZhiMangXing-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "Long Cang",
+  "dir": "longcang",
+  "src": "LongCang-Regular.ttf",
+  "file": "LongCang-Regular.ttf",
+  "size": 0
+ },
+ {
+  "family": "Liu Jian Mao Cao",
+  "dir": "liujianmaocao",
+  "src": "LiuJianMaoCao-Regular.ttf",
+  "file": "LiuJianMaoCao-Regular.ttf",
+  "size": 0
  }
 ]

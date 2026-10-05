@@ -33,6 +33,14 @@ FAMILIES = [
     ("Rampart One", "rampartone"),
     ("Noto Sans SC", "notosanssc"),
     ("Noto Serif SC", "notoserifsc"),
+    # 花骨朵: Chinese display faces (JIZURA maps its zh-Hans brush / dela / klee / round keys to the first four)
+    ("Ma Shan Zheng", "mashanzheng"),
+    ("ZCOOL XiaoWei", "zcoolxiaowei"),
+    ("ZCOOL QingKe HuangYou", "zcoolqingkehuangyou"),
+    ("ZCOOL KuaiLe", "zcoolkuaile"),
+    ("Zhi Mang Xing", "zhimangxing"),
+    ("Long Cang", "longcang"),
+    ("Liu Jian Mao Cao", "liujianmaocao"),
 ]
 WEIGHTS = {"Thin": 100, "ExtraLight": 200, "Light": 300, "Regular": 400, "Medium": 500,
            "SemiBold": 600, "Bold": 700, "ExtraBold": 800, "Black": 900}
