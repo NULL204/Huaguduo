@@ -1,0 +1,12 @@
+[
+  [1, 8,   "intro",       "intro",   "Intro",                 "sparse, fragile opening on a plucked figure",          "stops at 11.0-11.4 s and 14.85-15.5 s; vocal pickup 15.85 s"],
+  [9, 16,  "chorus",      "refrain", "Refrain 1",             "the hook asked for the first time: bewildered",        "first vocal entry; hook returns 3x"],
+  [17, 24, "verse",       "verse",   "Verse - last winter",   "narrative A-melody, cold and plain",                   "pickup 30.90 s; gap 46.4 s before the B-melody"],
+  [25, 32, "pre-chorus",  "want",    "B1 - a house",          "first 'I want', energy steps up, warm",                "bar 25 (48.09 s) = band thickens; pickup 46.90 s"],
+  [33, 40, "pre-chorus",  "want",    "B2 - to die in spring", "second 'I want', peak of the first half",              "bar 33 (64.09 s); pickup 62.85 s"],
+  [41, 48, "chorus",      "refrain", "Refrain 2",             "the hook again, now an accusation; loud",             "bar 41 (80.09 s); pickup 79.70 s"],
+  [49, 56, "break",       "refuse",  "B3 - the skin",         "quieter, intimate breakdown",                          "energy dip 96-110 s; pickup 94.85 s"],
+  [57, 64, "pre-chorus",  "refuse",  "B4 - workaholic",       "builds back up, mechanical drive",                     "bar 57 (112.09 s); pickup 110.85 s"],
+  [65, 72, "last-chorus", "refrain", "Refrain 3",             "the hook for the last time; widest, snow in summer",   "bar 65 (128.09 s); pickup 127.70 s"],
+  [73, 80, "outro",       "outro",   "Outro - the bloom",     "loudest climax, ends on a dead stop",                  "music_cut 160.19 s = the film's hard cut"]
+]
