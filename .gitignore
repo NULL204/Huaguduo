@@ -17,3 +17,9 @@ __pycache__/
 # rendered videos that are kept in the repo
 !videos/
 !videos/*.mp4
+
+# vocaloid_mv project: keep its engine LUTs, analysis plots and generated art (its own .gitignore excludes
+# node_modules, vendor, fonts, the song, the lyrics and *.raw.png)
+!vocaloid_mv/assets/**/*.png
+!vocaloid_mv/analysis/*.png
+!vocaloid_mv/docs/**/*.png
