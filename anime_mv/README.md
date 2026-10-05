@@ -50,7 +50,8 @@ Microsoft Edge (Playwright drives it headless; run `npm install` once).
 python tools/analyze_audio.py && python tools/lock_grid.py
 python tools/fetch_fonts_subset.py              # Google Fonts subsets of only the glyphs used (needs the LRC)
 node tools/stills.mjs --times 16.5,57.5,128.2 --sheet check
-node tools/render_frames.mjs --start 0 --workers 3 --codec x264 --crf 16 --preset slow --audio audio/song.wav --out render/master.mp4
+node tools/render_frames.mjs --start 0 --workers 3 --codec x264 --crf 14 --preset medium --audio audio/song.wav --out render/huaguduo_anime_pv_master.mp4
+python tools/deliver.py render/huaguduo_anime_pv_master.mp4 ../videos/huaguduo_anime_pv_1080p.mp4   # two-pass x264, < 100 MB
 ```
 On Windows set `PYTHON` to your interpreter if `python` is not on PATH. Without an NVIDIA GPU use `--codec x264`.
 
