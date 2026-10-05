@@ -42,9 +42,12 @@ await new Promise(r => server.listen(0, '127.0.0.1', r));
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await launchBrowser({ headless: true, args: [...gpuArgs(), '--enable-gpu-rasterization'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+// 花骨朵: fonts are local subsets (tools/fetch_fonts_subset.py); never let JIZURA fetch Google Fonts mid-render
+await page.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
 const errors = [];
 page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') { const s = `[page ${m.type()}] ${m.text().slice(0, 300)}`; errors.push(s); console.log(s); } });
 page.on('pageerror', e => { errors.push(String(e)); console.log('[pageerror]', String(e).slice(0, 500)); });
+page.on('response', r => { if (r.status() >= 400) console.log(`[http ${r.status()}] ${r.url().replace(origin, '')}`); });
 await page.goto(`${origin}/${pageUrl.replace(/^\/+/, '')}`);
 const meta = await page.evaluate(() => window.ready);
 console.log('ready', JSON.stringify(meta));

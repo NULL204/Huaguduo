@@ -53,7 +53,7 @@ def key_kind(k: np.ndarray) -> str:
 
 
 def unmix(img: Image.Image, floor: float = 0.04, ceil: float = 0.97, speck: int = 40,
-          soften: float = 1.0) -> tuple[Image.Image, dict]:
+          soften: float = 1.0, despill: bool = True) -> tuple[Image.Image, dict]:
     rgb = np.asarray(img.convert("RGB")).astype(np.float32)
     K = border_key(rgb)
     kind = key_kind(K)
@@ -87,6 +87,10 @@ def unmix(img: Image.Image, floor: float = 0.04, ceil: float = 0.97, speck: int 
     safe = np.maximum(a, 1e-3)[..., None]
     F = (rgb - (1.0 - a)[..., None] * K[None, None, :]) / safe
     F = np.clip(F, 0, 255)
+    # global despill: 阿朵's design (and every green-screen job of this film) contains no green, so any remaining
+    # green excess is spill or the generator drifting toward mint -> clamp G to max(R, B) (mint becomes ice blue)
+    if despill and kind == "green":
+        F[..., 1] = np.minimum(F[..., 1], np.maximum(F[..., 0], F[..., 2]))
     # fill fully transparent pixels with the nearest opaque colour (no key bleed when scaled)
     try:
         from scipy import ndimage

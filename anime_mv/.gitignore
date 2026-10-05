@@ -71,3 +71,4 @@ desktop.ini
 !/assets/**/*.png
 !/docs/*.png
 /assets/**/*.raw.png
+/engine/fonts/fonts_subset.css

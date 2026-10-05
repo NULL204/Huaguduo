@@ -358,6 +358,8 @@ async function main() {
   const openPage = async (w) => {
     const ctx = await browsers[w % browsers.length].newContext({ viewport: { width: a.width, height: a.height }, deviceScaleFactor: 1 });
     await ctx.addInitScript(initScript, cfg);
+    // 花骨朵: fonts are local subsets (tools/fetch_fonts_subset.py); never let JIZURA fetch Google Fonts mid-render
+    await ctx.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
     const page = await ctx.newPage();
     page.on('pageerror', (e) => console.error(`[w${w} pageerror]`, e.message));
     page.on('console', (m) => { if (a.verbose || m.type() === 'error') console.log(`[w${w} ${m.type()}]`, m.text()); });
