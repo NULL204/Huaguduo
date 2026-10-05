@@ -2,115 +2,112 @@
 
 Grid: steady 120 BPM, bar *n* starts at 0.09 + 2(n−1) s (`tools/lock_grid.py`); the music stops dead at 160.19 s.
 Lyric lines are referred to by index and onset from the user's LRC (L01 15.85 … L42 155.35) — never by text; the
-engine reads the words at runtime. "JZ" = JIZURA lyric layer (plans: `main` paper-light, `cf` centre-free, `spec`
-specimen-light, `night` dark scheme for the bedroom, `red` crimson over carmine frames). Custom scenes (`hgd*`) live
-in `engine/scenes/hgd.js`; every character drawing is a NovelAI/Codex key drawing animated by the puppet deformer
-(breathing, head tilt, hair / braid / shawl on damped springs driven by the body's motion, skirt flutter).
+engine reads the words at runtime and every glyph appears on its own sung onset (`analysis/char_timing.json`).
+Typography is designed per line inside each image (`engine/scenes/hgd_type.js`); the "type" column says how.
+Impact frames (集中線 + negative / carmine punch) mark the biggest hits: 16.09, both direction words of each
+refrain, 48.09, 66.09 (landing), 80.09, 128.09, 140.09 (the hairpin), 144.09, 154.14 (the bloom).
 
-## Intro 0–16.09 (bars 1–8; stops 11.00–11.38, 14.85–15.54)
+## Intro 0–16.09 (stops 11.00–11.38, 14.85–15.54 freeze the picture)
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s01 | 0.00–4.09 | – | hgdBranch intro | white page; a bare branch inks itself in from the left on 2s; a closed bud at its tip; frost sparkles drift |
-| s02 | 4.09–8.09 | – | hgdPalm intro | her cupped hands open slowly; a tiny white cochineal crawls onto the palm; first carmine pinpoint |
-| s03 | 8.09–11.38 | – | illust bust_calm | face, eyes lowered, breath; at the stop 11.00 everything freezes (particles, hair) |
-| s04 | 11.38–15.54 | – | hgdTitle | full body on the white page, shawl streaming; 花骨朵 typeset glyph by glyph on beats; credit line; freeze on the 14.85 stop |
+| s01 | 0–4.09 | branch | a bare branch inks itself in on a white page; a closed bud at its tip | – |
+| s02 | 4.09–8.09 | palm | her cupped hands; a white cochineal walks into the palm; the first carmine | – |
+| s03 | 8.09–11.38 | bust | blinking, breathing, rim light, snow bokeh passing | – |
+| s04 | 11.38–15.54 | title | full figure on the white page; 花骨朵 typeset on the beats; credit | title |
 
-## Refrain 1 16.09–32.09 (bewildered question)
+## Refrain 1 16.09–32.09 — the bewildered question
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s05 | 15.54–17.85 | L01 | illust field_fork + turn_back | she stands at the fork in a snowfield, crane down; downbeat kick 16.09 |
-| s06 | 17.85–20.09 | L02 | hgdFork | the two directions of the line split to the two paths, slamming on beats; she looks back between them |
-| s07 | 20.09–22.59 | (L02) | illust run | tracking shot: she runs across the snow, stride bob on the beat, hair and shawl stream, snow kicked up |
-| s08 | 22.59–26.09 | L03 | hgdPalm look | palm close-up, the insect walks across her palm (legs on 12 fps), push in; JZ cf |
-| s09 | 26.09–28.09 | L04 | hgdPalm morph | match cut: the insect curls into the closed bud in the same spot |
-| s10 | 28.09–30.59 | (L04) | illust bust_calm | rack focus from the bud hairpin to her eyes |
+| s05 | 15.54–17.85 | field | crane down to the fork; impact on 16.09; she turns (turn_mid → turn_back); shockwave | L01 gathers out of the snow, then blows away |
+| s06 | 17.85–20.09 | field | tracking run (3-drawing cycle), whip in, speed lines, snow rushing | L02 first half streams off behind her |
+| s07 | 20.09–22.59 | fork | camera whips to each path as its direction is sung (impact lines) | L02 second half pressed into the two footpaths |
+| s08 | 22.59–26.09 | palm | the insect walks her palm | L03 along her palm lines; the insect's name crawls after it |
+| s09 | 26.09–30.59 | palm | the insect curls into the bud (match cut) | L04 unfurls around the bud like petals |
 
-## Verse 32.09–48.09 (last winter: cold, plain)
+## Verse 32.09–48.09 — last winter
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s11 | 30.59–34.59 | L05 | illust sky | a pale sun disc tries to rise and sinks back; her small silhouette at the bottom edge |
-| s12 | 34.59–38.59 | L06 | illust alley | the empty alley, the sun sinking behind the roofline; she appears far away, walking away |
-| s13 | 38.59–42.59 | L07 | illust alley + back_walk | dolly behind her: steps on the beat, hair lagging; her long shadow on the wall |
-| s14 | 42.59–46.40 | L08 | illust alley + sit_knees | she sits under the eaves hugging her knees; snow drifts; the shadow stays standing a moment longer |
-| s15 | 46.54–48.09 | L09 | illust bust_calm | she lifts her gaze; the paper white warms |
+| s10 | 30.59–34.59 | sky | a pale sun tries to rise; her silhouette below | L05 frosts over in the sky |
+| s11 | 34.59–38.59 | alley | empty alley, light shafts, the sun sinking; she far away | L06 old paint on the wall; its sun glyph sits in the sun |
+| s12 | 38.59–42.59 | alley | walking away, her long shadow on the wall | L07 a shadow beside hers |
+| s13 | 42.59–46.40 | alley | hugging her knees under the eaves | L08 falls like snow and settles around her |
+| s14 | 46.40–48.09 | bust | she lifts her gaze; warm light, blinks | L09 breathed out in rouge |
 
-## B1 48.09–64.09 (a house)
+## B1 48.09–64.09 — a house
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s16 | 48.09–50.59 | L10 | hgdHouse | on the downbeat a paper house folds up around her, panel by panel on beats |
-| s17 | 50.59–54.59 | L11 | illust room + curtain | she lifts the sheer curtain and peeks in, hopeful; curtain sways |
-| s18 | 54.59–56.59 | L12 | illust bride_bust | the silver-beaded veil; glints on the beads |
-| s19 | 56.59–58.59 | L13 | hgdRouge | fingertip on the lip: carmine blooms out of the touch and floods the frame like dye in water, then draws back |
-| s20 | 58.59–62.59 | L14 | hgdCard | the court-poem compliment as an elegant vertical type card with drawn cloud scrolls — an empty frame around her |
-| s21 | 62.59–64.09 | L15 | illust master_c | wind rises; she braces at the edge |
+| s15 | 48.09–50.59 | house | paper walls hinge up on the beats, punches | L10 one glyph brushed onto each wall |
+| s16 | 50.59–54.59 | room | the curtain lifted; window light shafts | L11 behind the sheer curtain |
+| s17 | 54.59–56.59 | bride | the veil, bead glints | L12 made of silver beads |
+| s18 | 56.59–58.59 | rouge | fingertip on the lip; carmine floods the frame | L13 smeared like rouge |
+| s19 | 58.59–62.59 | card | an elegant vertical card, cloud scrolls, her ghost | L14 typed on its onsets |
+| s20 | 62.59–64.09 | wind | wind and petals rise | L15 torn away by the wind |
 
-## B2 64.09–80.09 (to die in spring)
+## B2 64.09–80.09 — to die in spring
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s22 | 63.59–66.59 | L16 | hgdFall | she falls backward in slow motion (pendulum about the heels, then free fall), hair and shawl streaming up; petals burst on the landing beat |
-| s23 | 66.59–70.59 | L17 | illust lying_flowers | top-down among poppies, slow rotation, petals settle on her |
-| s24 | 70.59–74.59 | L18 | hgdMud | spring mud: roots grow wildly on the beats, a petal sinks |
-| s25 | 74.59–79.59 | L19 | hgdPage | the frame becomes a printed page; silverfish crawl in and eat holes through it on the beats |
+| s21 | 64.09–66.59 | fall | the backward fall (pendulum, slow motion, second drawing mid-air), landing impact + petal burst | L16 falls with her |
+| s22 | 66.59–70.59 | flowers | top-down among poppies, petals passing the lens | L17 white paper glyphs among the flowers |
+| s23 | 70.59–74.59 | mud | roots grow on the beats | L18 sprouts roots |
+| s24 | 74.59–79.59 | page | silverfish eat the page | L19 printed on the page, eaten through |
 
-## Refrain 2 80.09–96.09 (the question as accusation; carmine stains creep in)
+## Refrain 2 80.09–96.09 — the question as accusation
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s26 | 79.59–82.09 | L20 | illust sing_power | slam on 80.09, low angle, wind; stains at the frame edges |
-| s27 | 82.09–84.09 | L21 | hgdFork accuse | the two directions again, now carmine brush slams; the frame splits |
-| s28 | 84.09–86.59 | (L21) | illust run | the run again, faster, speed lines |
-| s29 | 86.59–90.09 | L22 | hgdPalm crush | the palm trembles; carmine seeps out between the fingers |
-| s30 | 90.09–92.59 | L23 | hgdPalm crack | the bud in the palm splits, red showing |
-| s31 | 92.59–94.59 | (L23) | illust bust_sing | close singing, stains |
-| s32 | 94.59–96.09 | L24 | illust turn_back | she turns away; the music drops |
+| s25 | 79.59–82.09 | sing | carmine impact on 80.09, lip sync, red rim light, petals | L20 rouge stamps around her |
+| s26 | 82.09–83.59 | field | the run again, carmine | L21 first half streams off in brush |
+| s27 | 83.59–86.59 | fork | the frame splits on each direction word | L21 second half stamped into the paths |
+| s28 | 86.59–88.59 | palm | the hand trembles; dye seeps out | L22 first half bleeds out with the dye |
+| s28b | 88.59–90.09 | montage | eyes / her on carmine / the hand, one cut per beat | the insect's name, one glyph per cut |
+| s29 | 90.09–92.59 | palm | the bud cracks | L23 petals of words |
+| s30 | 92.59–94.59 | sing | close singing, lip sync | L23 end floats around her |
+| s31 | 94.59–96.09 | turn | she turns away and leaves | L24 left behind where she stood |
 
-## B3 96.09–112.09 (the skin — intimate breakdown; night blue)
+## B3 96.09–112.09 — the skin (night)
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s33 | 96.09–98.59 | L25 | illust reach | her hand reaches toward the viewer, pleading |
-| s34 | 98.59–102.59 | L26 | hgdDoll | she flickers between her drawing and a flat paper-doll cut-out of herself on the beats |
-| s35 | 102.59–106.59 | L27 | hgdBed warm | one bed: she lies on one side, the other side an empty dent; warm lamp vs cold window |
-| s36 | 106.59–110.59 | L28 | hgdBed split | the frame splits down the bed; the halves drift apart, two gradings, two dreams |
-| s37 | 110.59–112.09 | L29 | illust bust_calm | push in on her eyes; a clock tick starts |
+| s32 | 96.09–98.59 | reach | the hand reaches, then closes on nothing (reach → reach_b) | L25 glows beside her fingertips, then fades |
+| s33 | 98.59–102.59 | doll | drawing / paper doll on the beats | L26 visible only inside the paper doll |
+| s34 | 102.59–106.59 | bed | one bed, lamp and window | L27 on the quilt, warm half / cold half |
+| s35 | 106.59–110.59 | bed split | the frame splits along the bed | L28 split with the halves |
+| s36 | 110.59–112.09 | eyes | push into her eyes, blinks | L29 huge and dim behind her |
 
-## B4 112.09–128.09 (workaholic — mechanical drive)
+## B4 112.09–128.09 — workaholic
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s38 | 112.09–114.59 | L30 | illust office | dolly down the rows of identical desks, fluorescent flicker on the beat |
-| s39 | 114.59–118.59 | L31 | hgdCalendar | solar-term pages flip one per beat from 惊蛰 toward 霜降, carmine date stamps |
-| s40 | 118.59–122.59 | L32 | illust desk | she sleeps at the desk; day/night strobes through on the beats, paper piles rise |
-| s41 | 122.59–126.09 | L33 | hgdMemory | the earlier shots return as fading prints (palm, fork, run) and burn white one by one |
-| s42 | 126.09–127.59 | (L34) | illust snow | white-out begins |
+| s37 | 112.09–114.59 | office | dolly rush, a punch on every beat | L30 repeated on every desk |
+| s38 | 114.59–118.59 | calendar | solar-term pages flip one per beat | L31 handwritten on the page |
+| s39 | 118.59–122.59 | desk | day / night strobe on the beats | L32 rubber-stamped on the paper piles |
+| s40 | 122.59–126.09 | memory | earlier shots as prints, burning | L33 captions on the prints |
+| s41 | 126.09–127.59 | white-out | snow rushes in | L33 end rises as ash |
 
-## Refrain 3 128.09–144.09 (snow in June; strongest sparkle)
+## Refrain 3 128.09–144.09 — snow in June
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s43 | 127.59–130.09 | L34 | illust snow + sing_power | slam on 128.09 in heavy snow |
-| s44 | 130.09–132.09 | L35 | hgdFork snow | the fork buried in snow, the two directions blown apart |
-| s45 | 132.09–134.59 | (L35) | illust run | running through the blizzard |
-| s46 | 134.59–138.09 | L36 | hgdPalm snow | snowflakes land in her palm and melt into carmine drops |
-| s47 | 138.09–141.09 | L37 | illust pull_pin | she pulls the bud hairpin out; it flies off on the downbeat |
-| s48 | 141.09–143.59 | (L37) | illust kneel_snow | she kneels; the bud lies in the snow in the foreground |
+| s42 | 127.59–130.09 | sing | negative impact on 128.09, blizzard, lip sync | L34 formed of snow |
+| s43 | 130.09–131.59 | field | the run through the blizzard | L35 first half streams off |
+| s44 | 131.59–134.59 | fork | the paths buried | L35 second half pressed into the snow, then buried |
+| s45 | 134.59–136.59 | palm | snow lands in her palm | L36 flakes melting into rouge |
+| s45b | 136.59–138.09 | montage | hairpin / eyes / hand | one glyph per cut |
+| s46 | 138.09–141.09 | hairpin | carmine impact on 140.09: the hairpin is torn out and held high | L37 first half whirled away |
+| s47 | 141.09–143.59 | kneel | the dropped bud in the snow, focus pull | L37 end settles in the snow |
 
-## Outro 144.09–160.19 (the bloom) and tail
+## Outro 144.09–160.19 — the bloom, and the tail
 
-| # | time | lyric | scene | content |
+| # | time | scene | picture | type |
 |---|---|---|---|---|
-| s49 | 143.59–146.09 | L38 | illust sing_power | full voice; snow turns into carmine petals |
-| s50 | 146.09–150.59 | L39 | illust face_close | the tear, slow push; the forehead mark glows |
-| s51 | 150.59–154.09 | L40 | hgdBloom swell | back to the opening branch; colour floods in; the bud swells and cracks |
-| s52 | 154.09–155.35 | L41 | hgdBloom pop | the bud pops open on the beat, light as a joke |
-| s53 | 155.35–160.19 | L42 | hgdBloom ignored | the open flower on a bare branch; pull back until it is tiny in a vast white page; **hard cut at 160.19** |
-| s54 | 160.19–end | – | hgdBloom tail | silence: the same branch with a new closed bud; credits |
-
-Signature moments: stops freeze (s03/s04) · insect ↔ bud match cut (s08→s09) · paper house fold (s16) · rouge flood
-(s19) · the fall (s22) · silverfish eat the page (s25) · solar-term calendar (s39) · memory prints burn (s41) · the
-hairpin pulled out (s47) · the bloom and the hard cut to a new bud (s51–s54).
+| s48 | 143.59–146.09 | sing | carmine impact, petal storm, lip sync | L38 rises with the petals |
+| s49 | 146.09–150.59 | face | the tear, slow push, light | L39 tiny, down the track of her tear |
+| s50 | 150.59–154.09 | branch | the bud swells and cracks; a thread of rouge winds up to it | L40 strung along the thread |
+| s51 | 154.09–155.35 | bloom | the bud pops open on the downbeat (impact) | L41 pops out with it |
+| s52 | 155.35–160.19 | ignored | pull back until the flower is a dot on a white page; she walks away, tiny | L42 tiny at the branch tip |
+| s53 | 160.19–end | tail | **hard cut**: the same branch, a new closed bud, silence, credits | – |
