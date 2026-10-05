@@ -48,11 +48,13 @@ smear of red on an unwatched branch. The music stops dead; the same branch alrea
 
 ## Typography voice
 
-- Chinese lyrics in a thin serif (Noto Serif SC light), small and elegant, mostly vertical side bands that keep her
-  face clear; carmine brush faces (Ma Shan Zheng / Zhi Mang Xing) only for the キメ words; Long Cang handwriting for
-  memory lines.
-- The refrain's left/right question becomes architecture: the two directions split to either side of the fork.
-- B4's solar terms as a flip calendar. Credits as small, elegant type in the title lockup and the end card.
+- No template layer: every line is designed for its own image and meaning and appears glyph by glyph on its sung
+  onset — snow that gathers into the words, the two directions pressed into the snow paths, words along her palm
+  lines, a shadow on the alley wall, silver veil beads, rouge stamps, roots, the page the silverfish eat, the
+  calendar note, captions burning with the prints, flakes melting into rouge, a thread of rouge up to the bud.
+- Faces: thin Noto Serif SC for most lines, carmine brush (Ma Shan Zheng) for the accusations and stamps, Long Cang
+  handwriting for the palm, the calendar and the prints. The words support the picture; they never cover her face.
+- Credits as small, elegant type in the title lockup and the end card.
 
 ## Signature moments
 
@@ -70,14 +72,16 @@ smear of red on an unwatched branch. The music stops dead; the same branch alrea
 
 ## Animation (not a slideshow)
 
-Every pose is a NovelAI key drawing. Motion comes from:
-1. **Deformation with physics:** mesh warps on each drawing — breathing, small head tilts, hair, braid and shawl on
-   damped springs driven by the body's acceleration (secondary motion that lags and overshoots).
-2. **Pose to pose:** cuts between key drawings on the beat with smear and impact frames, drawn motion on 2s/3s
-   (12 fps); camera, light and particles at 30 fps.
-3. **Physical actions:** the fall (a rigid-body pendulum about the heels under gravity, then a squash on impact),
-   walking bob at the step rate, snow, petals and dust with closed-form physics.
-4. **Camera:** multiplane parallax, dolly, rack focus, beat-locked kicks.
+Every pose is a key drawing generated against the master; motion comes from:
+1. **Key drawings, pose to pose:** a 3-drawing run cycle on the beat, mouth-closed variants for lip sync on every
+   sung syllable, blink variants, second poses for the turn, the reach, the fall and the hairpin pull, switched with
+   smears; drawn motion on 2s/3s (12 fps); camera, light and particles at 30 fps.
+2. **Deformation with physics:** a WebGL mesh warp on each drawing — breathing, head tilts, hair, braid and shawl on
+   damped springs driven by the body's acceleration and the wind (secondary motion that lags and overshoots).
+3. **Physical actions:** the fall (a pendulum about the heels under gravity, then the landing), walking and running
+   bob at the step rate, snow, petals and dust with closed-form physics.
+4. **Impact:** impact frames with 集中線 and a negative or carmine punch on the biggest hits, per-beat close-up
+   montages in the choruses, zoom punches, whip pans, shockwaves, rim light, petals and snow passing the lens.
 
 ## Different from the original PV and from 残光
 
