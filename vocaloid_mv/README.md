@@ -1,3 +1,37 @@
+# 《花骨朵》 — fan-made Vocaloid-style lyric MV (vocal: 洛天依)
+
+A 文字PV / 手書き-style MV for 《花骨朵》, made with **NikusonP's vocaloid-style-mv-pipeline** (engine, JIZURA 字面 lyric
+layer, beat-locked editing, WebGL post pass, stills / review-sheet loop). It is this song's own film, not a re-skin of
+the kit's example: the protagonist is the poppy bud itself (花骨朵), printed in sumi ink and carmine on rice paper —
+no drawn singer and no image assets; every frame is procedural (`engine/scenes/hgd_*.js` on the shared kit
+`engine/scenes/hgd_core.js`, cut by `engine/timeline.js`).
+
+- Concept, colour script, motifs: `docs/CONCEPT.md` · shot list (47 shots, beat- and syllable-locked): `docs/STORYBOARD.md`
+- Audio analysis: `docs/AUDIO_MAP.md`, `analysis/audio.json`, `analysis/sections.json`, per-glyph onsets `analysis/char_timing.json`
+- The rendered film: `../videos/huaguduo_vocaloid_mv_1080p.mp4`
+
+**Lyrics are not stored in this repository.** Put the official LRC at `analysis/lyrics_source.lrc`, then build the
+JIZURA copy with the markup overlay (`analysis/lyrics_markup.json`, positions only):
+
+```bash
+python tools/build_lyrics_mv.py            # analysis/lyrics_source.lrc -> analysis/lyrics_mv.lrc
+```
+
+Render (after `./setup.sh`; fonts: `python tools/fetch_fonts.py`, or `python tools/fetch_fonts_gfonts.py` when the
+GitHub API is blocked; the song as `audio/song.wav`):
+
+```bash
+node tools/stills.mjs --times 8,24.2,36.9,57,64.3,78.5,116,126.5,142.6,158 --sheet look     # quick look
+node tools/render_final.mjs --name mv                       # NVIDIA GPU (NVENC)
+node tools/render_final.mjs --name mv --codec x264          # any other machine
+```
+(On a machine without a GPU, call `tools/render_frames.mjs` with `--allow-software`, see section 4 below.)
+
+Credits: song 《花骨朵》, vocal 洛天依 (fan-made, non-commercial). Engine and method: vocaloid-style-mv-pipeline by
+NikusonP (MIT). Lyric layer: JIZURA 字面 (c) 2026 hakoniwa (github.com/852wa), MIT. Fonts: Google Fonts, SIL OFL 1.1.
+
+---
+
 # Vocaloid-style MV project
 
 A Vocaloid-style 手書き (tegaki) lyric MV project made from the **vocaloid-style-mv-pipeline** template (author: **NikusonP**,
