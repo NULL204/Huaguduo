@@ -184,13 +184,13 @@
     shot('s11', 34.59, 38.59, 'hgdShot', { bg: BG + 'alley.png', view: { from: { zoom: 1.04, x: 0.2 }, to: { zoom: 1.2, x: 0.35 } },
       fxBack: [{ type: 'custom', fn: (ctx, St) => { ctx.save(); ctx.globalAlpha = 1 - St.p * 0.85; G.fx(ctx, St, { type: 'sun', x: 1180, y: 250 + 120 * St.p, r: 50 }); ctx.restore(); } }, { type: 'shafts', x: 1500, y: -80, angle: 2.0, n: 5, alpha: 0.28, gap: 110, width: 70 }],
       chars: [{ img: A + 'back_walk.png', x: 1150, y: 655, x2: 1165, y2: 640, h: 170, h2: 140, bob: { amp: 2, steps: 1 }, wind: 3, lag: false }], fx: [snowL(46), { type: 'fgSnow', n: 6, size: 70, speed: 140, wind: 0.3 }],
-      lyrics: [{ line: 6, z: 'back', fx: 'wall', skip: iSun >= 0 ? [iSun] : [], lay: { type: 'path', pts: [[1810, 430], [1580, 480], [1380, 525]], scale: [1, 0.55] }, size: 150, weight: 600, alpha: 0.8, color: '#4E5A72' },
+      lyrics: [{ line: 6, z: 'back', fx: 'wall', skip: iSun >= 0 ? [iSun] : [], lay: { type: 'col', x: 1760, y: 250, pitch: 1.08, per: 4, gap: 1.35 }, size: 104, weight: 600, alpha: 0.85, color: '#4E5A72' },
         ...(iSun >= 0 ? [{ line: 6, from: iSun, to: iSun + 1, z: 'back', fx: 'ink', lay: fnLay((k, n, S) => [1180, 250 + 120 * S.p, 0, 1]), size: 58, weight: 300, color: '#8D9BAD' }] : [])] },
       { trans: { type: 'xfade', dur: 0.3 } });
     shot('s12', 38.59, 42.59, 'hgdShot', { bg: BG + 'alley.png', view: { from: { zoom: 1.28, x: 0.3, y: 0.3 }, to: { zoom: 1.42, x: 0.38, y: 0.3 } },
       chars: [{ img: A + 'back_walk.png', x: 1000, y: 1090, x2: 1070, y2: 1040, h: 720, h2: 620, bob: { amp: 10, steps: 1 }, wind: 12, shadow: { dx: -330, dy: -10, skewX: 1.15, sy: 0.5, a: 0.22 } }],
       fx: [snowL(50), { type: 'fgSnow', n: 8, size: 90, speed: 200, wind: 0.5 }],
-      lyrics: [{ line: 7, z: 'back', fx: 'shadow', lay: { type: 'path', pts: [[150, 520], [420, 560], [700, 610]], scale: [1.15, 0.8] }, size: 116, weight: 600, skew: -0.7, sy: 0.92, alpha: 0.36, soft: 1.2, color: '#3E4B63' }] });
+      lyrics: [{ line: 7, z: 'back', fx: 'shadow', lay: { type: 'col', x: 420, y: 240, pitch: 1.08, per: 4, gap: -1.4 }, size: 100, weight: 600, skew: -0.35, sy: 1, alpha: 0.4, soft: 1, color: '#3E4B63' }] });
     shot('s13', 42.59, 46.40, 'hgdShot', { bg: BG + 'alley.png', view: { from: { zoom: 1.4, x: -0.7, y: 0.45 }, to: { zoom: 1.62, x: -0.85, y: 0.5 } },
       chars: [{ img: A + 'sit_knees.png', x: 780, y: 1020, h: 560, wind: 6, lag: false, breathe: 1.6, shadow: { dx: 120, dy: 0, skewX: -1.2, sy: 0.25, a: 0.18 } }],
       fx: [snowL(50, { speed: 30 }), { type: 'fgSnow', n: 6, size: 110, speed: 90, wind: 0.2, alpha: 0.8 }],
@@ -207,7 +207,7 @@
       fxBack: [{ type: 'shafts', x: 1760, y: -120, angle: 2.25, n: 7, alpha: 0.5, gap: 120, width: 80, rgb: '255,246,228' }],
       chars: [{ img: A + 'curtain.png', x: 760, y: 1050, h: 920, wind: 16, flutter: 1, lag: false, tilt: 0.015 }],
       fx: [{ type: 'leak', blobs: [[0.9, 0.2, '255,236,210']], r: 900, alpha: 0.45 }],
-      lyrics: [{ line: 11, z: 'back', fx: 'veil', lay: { type: 'col', x: 905, y: 150, pitch: 1.1, per: 5, gap: 1.2 }, size: 84, weight: 500, color: INK, soft: 1.6, alpha: 0.85 }] },
+      lyrics: [{ line: 11, z: 'back', fx: 'veil', lay: { type: 'col', x: 965, y: 140, pitch: 1.08, per: 5, gap: 1.15 }, size: 90, weight: 600, color: '#1E2638', soft: 1.1, alpha: 1 }] },
       { trans: { type: 'xfade', dur: 0.3 } });
     shot('s17', bt(28, 1), bt(29, 1), 'hgdShot', { fill: ['#F7F9FC', '#E6ECF3'], chars: [{ img: A + 'bride_bust.png', x: 980, y: 1170, h: 1200, h2: 1300, wind: 10, lag: false, tilt: 0.012, rim: RIM_ICE }],
       fx: [sparkAt([500, 150, 1450, 700], { n: 14, size: 34, rate: 1.2 })],
@@ -222,7 +222,7 @@
       { trans: { type: 'xfade', dur: 0.25 } });
 
     // ===== B2 — to die in spring
-    shot('s21', B(33), bt(34, 1), 'hgdFall', { land: B(34), slow: 0.34, x: 900, y: 1010, h: 960, pose2: { at: bt(33, 2) + 0.2, img: A + 'fall_b.png' },
+    shot('s21', B(33), bt(34, 1), 'hgdFall', { land: B(34), slow: 0.34, x: 1120, y: 1060, h: 1240, pose2: { at: bt(33, 2) + 0.2, img: A + 'fall_b.png' },
       lyrics: [{ line: 16, z: 'front', fx: 'fall', lay: fnLay((k, n, S) => { const f = S.fall || { hx: 900, hy: 1010 }; return [f.hx - 380 + k * 170, 260 + (k % 2) * 90, 0, 1]; }), size: 100, weight: 500, color: INK, delay: 0.5, gravity: 520, life: 3 }] });
     shot('s22', bt(34, 1), bt(36, 1), 'hgdShot', { bg: A + 'lying_flowers.png', view: { from: { zoom: 1.12, rot: -0.05 }, to: { zoom: 1.4, rot: 0.05, x: -0.3, y: -0.3 } },
       fx: [{ type: 'petals', n: 36, size: 12, speed: 50, wind: 0.2 }, { type: 'fgPetals', n: 4, size: 150, speed: 260, alpha: 0.75 }, { type: 'leak', blobs: [[0.8, 0.15, '255,236,220']], r: 800, alpha: 0.4 }],
@@ -335,7 +335,7 @@
       fx: [{ type: 'petals', n: 90, size: 14, speed: 160, wind: 1.1 }, { type: 'fgPetals', n: 6, size: 150, speed: 1000, alpha: 0.85 }, snowL(60, { size: 4, speed: 160, wind: 0.8 }), stains(), { type: 'shock', at: [B(73)], y: 420, r: 1300, rgb: '255,210,220' }],
       lyrics: [{ line: 38, z: 'front', fx: 'float', lay: pts([[360, 760], [440, 520], [560, 320], [1440, 320], [1560, 520], [1640, 760], [1000, 150]]), size: 92, weight: 600, color: P.carmine, rise: 70 }] });
     shot('s49', B(74), bt(76, 1), 'hgdShot', { bg: A + 'face_close.png', view: { from: { zoom: 1.0 }, to: { zoom: 1.2, y: -0.25 } },
-      fx: [{ type: 'glow', x: 940, y: 330, r: 160, color: '#FF8FA8', a: 0.3 }, { type: 'petals', n: 28, size: 12, speed: 60, wind: 0.4 }, { type: 'fgPetals', n: 3, size: 170, speed: 240, alpha: 0.7 }, { type: 'leak', blobs: [[0.85, 0.2, '255,214,224'], [0.1, 0.9, '214,228,255']], r: 900, alpha: 0.45 }, stains(0.6)],
+      fx: [{ type: 'petals', n: 28, size: 12, speed: 60, wind: 0.4 }, { type: 'leak', blobs: [[0.85, 0.2, '255,214,224'], [0.1, 0.9, '214,228,255'], [0.05, 0.1, '255,222,230']], r: 900, alpha: 0.5 }],
       lyrics: [{ line: 39, z: 'front', fx: 'whisper', lay: { type: 'path', pts: [[1124, 610], [1130, 740], [1121, 870], [1104, 1010]] }, size: 36, weight: 600, color: P.blood, alpha: 0.9, hold: 0.4 }] },
       { trans: { type: 'xfade', dur: 0.4 } });
     const L40 = G.lineInfo(40);

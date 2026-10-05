@@ -690,8 +690,10 @@
       ctx.save(); ctx.translate(x, 0); ctx.scale(Math.max(0.05, Math.abs(flip)), 1); ctx.translate(-x, 0);
       if (doll) {
         // a flat paper cut-out of her: paper-white fill, a pencil outline, paper grain inside
-        ctx.save(); ctx.globalAlpha = 0.9; G.puppet(ctx, G.tint(im, '#4A5872'), x + 6, y + 4, h, { t, wind: 4, rigName: a.char || A + 'bust_calm.png' }); ctx.restore();
-        G.puppet(ctx, G.tint(im, '#F2F0EA'), x, y, h, { t, wind: 4, rigName: a.char || A + 'bust_calm.png' });
+        const ro = { t, wind: 4, rigName: a.char || A + 'bust_calm.png' };
+        ctx.save(); ctx.globalAlpha = 0.95; G.puppet(ctx, G.tint(im, '#3E4B63'), x, y + 3, h * 1.008, ro); ctx.restore();   // pencil edge
+        G.puppet(ctx, G.tint(im, '#F2F0EA'), x, y, h, ro);                                                                  // the paper
+        ctx.save(); ctx.globalAlpha = 0.34; ctx.globalCompositeOperation = 'multiply'; G.puppet(ctx, im, x, y, h, ro); ctx.restore();   // her, through it
         G.lyrics(ctx, S, 'xray');
       } else {
         G.puppet(ctx, im, x, y, h, { t, wind: 8, tilt: 0.02 * Math.sin(t), rigName: a.char || A + 'bust_calm.png' });
