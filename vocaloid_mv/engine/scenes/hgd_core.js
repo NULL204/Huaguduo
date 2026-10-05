@@ -379,7 +379,8 @@
   // detach: 0..1 bud separated from the stem tip (with offset dx, dy, spin) }
   const PAL = {
     plate: { line: '#2A2321', sepal: '#9DBB86', shade: '#6E9562', stem: '#8CAF77', red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(42,35,33,0.55)' },
-    print: { line: C.ink, sepal: '#EEE6D8', shade: '#CFC5B5', stem: '#E6DCCB', red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(27,20,32,0.6)' },
+    print: { line: C.ink, sepal: '#F1EADD', shade: '#DCD2C2', stem: '#EAE1D2', red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(27,20,32,0.42)' },
+    blush: { line: C.ink, sepal: '#F4DCDA', shade: '#E6BFC0', stem: '#EAE1D2', red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(27,20,32,0.42)' },
     snow: { line: '#22303F', sepal: '#DDE7EE', shade: '#AFC2D2', stem: '#C9D8E3', red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(34,48,63,0.55)' },
     night: { line: '#FF9DB6', sepal: '#2A2050', shade: '#1A1438', stem: '#241C48', red: '#FF3D6E', redD: '#B3123E', redL: '#FF8FB0', hatch: 'rgba(255,157,182,0.45)' },
     sil: { line: C.ink, sepal: C.ink, shade: C.ink, stem: C.ink, red: C.carmine, redD: C.deep, redL: C.rouge, hatch: 'rgba(0,0,0,0)' },
@@ -476,13 +477,13 @@
         ctx.save(); ctx.clip(sp);
         ctx.fillStyle = P.shade; ctx.globalAlpha *= 0.85;               // one shadow tone (the lower half, away from the light)
         ctx.beginPath(); ctx.ellipse(Lb * 0.55, side * Wb * 0.42, Lb * 0.62, Wb * 0.3, side * 0.12, 0, TAU); ctx.fill();
-        ctx.globalAlpha = 1; ctx.strokeStyle = P.hatch; ctx.lineWidth = Math.max(0.7, lw * 0.45);
-        ctx.beginPath();                                                 // engraving hatch, following the curvature
-        for (let k = 0; k < 16; k++) {
-          const u = 0.08 + k * 0.055, hw = Wb / 2 * budHW(u);
-          ctx.moveTo(u * Lb, side * hw * 0.98); ctx.quadraticCurveTo((u + 0.02) * Lb, side * hw * 0.62, (u + 0.035) * Lb, side * hw * 0.35);
+        ctx.globalAlpha = side > 0 ? 1 : 0.45; ctx.strokeStyle = P.hatch; ctx.lineWidth = Math.max(0.6, lw * 0.38);
+        ctx.beginPath();                                                 // engraving hatch on the shadow side, following the curvature
+        for (let k = 0; k < 13; k++) {
+          const u = 0.12 + k * 0.062, hw = Wb / 2 * budHW(u), reach = side > 0 ? 0.42 : 0.68;
+          ctx.moveTo(u * Lb, side * hw * 0.97); ctx.quadraticCurveTo((u + 0.02) * Lb, side * hw * (reach + 0.25), (u + 0.035) * Lb, side * hw * reach);
         }
-        ctx.stroke();
+        ctx.stroke(); ctx.globalAlpha = 1;
         if (wither > 0) { ctx.globalAlpha = wither * 0.6; ctx.strokeStyle = P.line; ctx.beginPath(); for (let k = 0; k < 6; k++) { const u = 0.15 + k * 0.13; ctx.moveTo(u * Lb, 0); ctx.lineTo((u + 0.08) * Lb, side * Wb * 0.4 * budHW(u)); } ctx.stroke(); }
         ctx.restore();
       }
