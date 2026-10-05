@@ -187,8 +187,11 @@ def postprocess_alpha(raw: Path, out: Path, trim: bool) -> dict:
     src = Image.open(raw)
     rep = am.alpha_report(src)
     if rep.get("transparent_pct", 0) < 5:
-        img, _ = am.key_out(src.convert("RGB"))
-        method = "chroma-key"
+        # 花骨朵: colour-difference unmix instead of a tolerance key, so sheer fabric stays translucent
+        # (tools/key_unmix.py); trimming happens below
+        import key_unmix
+        img, _ = key_unmix.unmix(src)
+        method = "chroma-unmix"
     else:
         img, _ = am.normalize_alpha(src.convert("RGBA"))
         method = "native-alpha"

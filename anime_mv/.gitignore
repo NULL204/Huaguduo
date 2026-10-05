@@ -64,3 +64,6 @@ desktop.ini
 /analysis/lyrics*.json
 /analysis/lyric*.txt
 /engine/fonts/subset_chars.txt
+# generator by-products: raw chroma-screen originals stay local (re-key with tools/key_unmix.py), Codex logs
+/assets/**/*.raw.png
+/assets/**/_logs/
