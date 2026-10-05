@@ -67,3 +67,7 @@ desktop.ini
 # generator by-products: raw chroma-screen originals stay local (re-key with tools/key_unmix.py), Codex logs
 /assets/**/*.raw.png
 /assets/**/_logs/
+# the repository root ignores *.png (earlier project); this project keeps its art and palettes
+!/assets/**/*.png
+!/docs/*.png
+/assets/**/*.raw.png
